@@ -22,4 +22,4 @@ Tasks:
 
 Thank you for time. We really appreciate you taking the time to complete the test and hope it is not too much of a burden. Regardless of the outcome, good luck with your job search!
 
-* Ethically Team
+__Ethically Team__
