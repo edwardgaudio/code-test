@@ -18,8 +18,8 @@ Tasks:
 
 4. On the frontend, using `/src/App.js` as a starting point, build a tiny front-end that allows you to select a characteristic from a select box. When the characteristic is selected the application will call out to the backend application and grab a list of products matching that characteristic the selected characteristic. Please use react hooks(<a href="https://reactjs.org/docs/hooks-intro.html">docs</a>) to accomplish this task.
 
-5. Submit a pull request to this repo with you answers and email edward@joinethically.com to indicate the test is complete.
+5. Submit a pull request to this repo with your answers and email edward@joinethically.com to indicate the test is complete.
 
-Thank you for time. We really appreciate you taking the time to complete the test and hope it is not too much of a burden. Regardless of the outcome, good luck with your job search!
+Thank you for your time. We really appreciate you taking the time to complete the test and hope it is not too much of a burden. Regardless of the outcome, good luck with your job search!
 
 __Ethically Team__
