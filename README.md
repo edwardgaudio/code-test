@@ -16,7 +16,7 @@ Tasks:
 
 3. On the backend, write a new route that returns a list of products with a score associated with each product. The score will be based on characteristic composition. Characteristics "Humane", "Locally Produced", "Healthy" are worth 1 point, "Plastic-Free" is worth 2 points, "Unhealthy" and "Wasteful" are -1 point each. Once again assume performance at scale if you can and use any method you see fit to make the endpoint more performant.
 
-4. On the frontend, using `/src/App.js` as a starting point, build a tiny front-end that allows you to select a characteristic from a select box. When the characteristic is selected the application will call out to the backend application and grab a list of products matching that characteristic the selected characteristic. Please use react hooks(<a href="https://reactjs.org/docs/hooks-intro.html">docs</>) to accomplish this task.
+4. On the frontend, using `/src/App.js` as a starting point, build a tiny front-end that allows you to select a characteristic from a select box. When the characteristic is selected the application will call out to the backend application and grab a list of products matching that characteristic the selected characteristic. Please use react hooks(<a href="https://reactjs.org/docs/hooks-intro.html">docs</a>) to accomplish this task.
 
 5. Submit a pull request to this repo with you answers and email edward@joinethically.com to indicate the test is complete.
 
