@@ -1,4 +1,4 @@
-## Welcome to the Ethically code test!
+## Welcome to the code test!
 
 In this respository you have two directories
 `/be` for "backend" and `fe` for "frontend".
@@ -22,4 +22,4 @@ Tasks:
 
 Thank you for your time. We really appreciate you taking the time to complete the test and hope it is not too much of a burden. Regardless of the outcome, good luck with your job search!
 
-__Ethically Team__
+__Edward D. Gaudio__
