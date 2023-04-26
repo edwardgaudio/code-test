@@ -1,5 +1,6 @@
 # Node.js and Express
 node_modules/
+**/node_modules/
 dist/
 *.log
 
