@@ -32,9 +32,14 @@ module.exports = {
 }
 
 
-// this could be a fun place to try out some unit testing
-const sampleArrayOfCharacs = ['Humane', 'Locally Produced']
-// const sampleArrayOfCharacs = 'Humane'
-const pointsSum = sumPointsOfCharacteristics(sampleArrayOfCharacs)
-console.log('pointsSum')
-console.log(pointsSum)
+// // this could be a fun place to try out some unit testing
+// const sampleArrayOfCharacs = ['Humane', 'Locally Produced']
+// // const sampleArrayOfCharacs = 'Humane'
+// const pointsSum = sumPointsOfCharacteristics(sampleArrayOfCharacs)
+// console.log('pointsSum')
+// console.log(pointsSum)
+
+// // generate a function that adds two numbers together
+// const addTwoNumbers = (a, b) => {
+//     return a + b
+// }   
