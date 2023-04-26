@@ -24,9 +24,9 @@ router.get('/', function(req, res, next) {
 router.get('/characteristics-score', function(req, res, next) {
 
   try {
-    // Not wild about this way of doing this
-    // this "score" seems like something that would be computed on insert to a datastore instead of on retrieval
     const data = productUtil.getProductsWithCharacteristicPoints()
+    // Not wild about this ^^ way of doing this
+    // this "score" seems like something that would be computed on insert to a datastore instead of on retrieval
     return res.send(data)
   } catch (error) {
     console.error(error)
