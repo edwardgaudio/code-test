@@ -17,7 +17,11 @@ const getCharateristicIndex = () => {
 const characteristicIndex = getCharateristicIndex();
 
 const getProductsByCharacteristicIndex = (charac) => {
-    return characteristicIndex[charac]
+     if (characteristicIndex[charac]) {
+        return characteristicIndex[charac]
+     } else {
+        return []
+     }
 }
 
 module.exports = { 

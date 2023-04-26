@@ -1,5 +1,5 @@
 const productData = require('../data/products');
-const { getProductsByCharacteristicIndex }  = require('../data/index/characteristicIndex')
+const { getProductsByCharacteristicIndex }  = require('../data/index/characteristicIndex.js')
 const { sumPointsOfCharacteristics } = require('../data/characteristicPoints')
 
 const productUtil = {
