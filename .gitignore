@@ -1,0 +1,9 @@
+# Node.js and Express
+node_modules/
+dist/
+*.log
+
+# Jest
+coverage/
+.cache/
+.nyc_output/
