@@ -1,0 +1,26 @@
+const productData = require('../products');
+
+const getCharateristicIndex = () => {
+    let index = {}
+    productData.forEach((product) => {
+        product.characteristics.forEach((charac) => {
+            if (!index[charac]) {
+                index[charac] = []
+            }
+            index[charac].push(product)
+        })
+    })
+    console.log("characteristicIndex: ", index)
+    return index
+}
+
+const characteristicIndex = getCharateristicIndex();
+
+const getProductsByCharacteristicIndex = (charac) => {
+    return characteristicIndex[charac]
+}
+
+module.exports = { 
+    getCharateristicIndex,
+    getProductsByCharacteristicIndex
+}
