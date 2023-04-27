@@ -36,6 +36,14 @@ router.get('/characteristics-score', function(req, res, next) {
   }
 });
 
+// *future state consideration*
+// thinking about this more, besides it being precomputed on insert, 
+// I could see the  `scores` api functioning well if it took a bunch of productIds and return 
+// the scores for them. If this score concept was one that was going to be extended to a whole
+// bunch of different properties, perhaps a separate API which took in the Id and pivot(s) could be
+// be used to return the score in that way. If there were a lot of products then it would be nice to 
+// precomputed in some sort of 0(1) accessible store. This all comes down to how it'll be used.
+
 module.exports = router;
 
 
