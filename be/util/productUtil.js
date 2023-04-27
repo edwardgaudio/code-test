@@ -1,12 +1,14 @@
-const productData = require('../data/products');
+const rawProductData = require('../data/products');
 const { getProductsByCharacteristicIndex }  = require('../data/index/characteristicIndex.js')
 const { sumPointsOfCharacteristics } = require('../data/characteristicPoints')
+const _ = require("lodash")
 
 const productUtil = {
     getAllProductsData: () => {
-        return productData;
+        return _.cloneDeep(rawProductData); // rather than expose reference to original data, product.js could have a getter that returns a copy so I don't effect the original. cloning as I was getting calls later on for products which still included characteristic scores. Probably more efficient ways of doing this...
     },
-    getProductsFiltered: (filterObject) => {
+    getProductDataByParams: (paramsObject) => {
+        let outputProductData = []
 /*
         *Assumes 1 characteristic input for now*
         
@@ -20,34 +22,37 @@ const productUtil = {
 
         // console.log("filter object: ", filterObject)
 
-        if (!filterObject.characteristics) {
-            return productData;
+        // handle characteristics filtering
+        if (!paramsObject.characteristics) {
+            outputProductData = _.cloneDeep(rawProductData)
+        } else {
+            if ( typeof paramsObject.characteristics !== 'string') {
+                throw new TypeError("characteristics can only be a single element, data types such as array are not yet implemented")
+            }
+            //old way 0(n)(m)
+            // filteredProducts = productData.filter((product, index) => {
+            //     console.log(index, product)
+            //     return product.characteristics.includes(filterObject.characteristics)
+            // })
+    
+            // new way 0(1)
+            outputProductData = getProductsByCharacteristicIndex(paramsObject.characteristics)
         }
-        
-        if ( typeof filterObject.characteristics !== 'string') {
-            throw new TypeError("characteristics can only be a single element, data types such as array are not yet implemented")
+
+        if (paramsObject.includeCharacteristicsScores === 'true') {
+            outputProductData = productUtil.getProductsWithCharacteristicScore(outputProductData)
         }
 
-
-        //old way 0(n)(m)
-        // filteredProducts = productData.filter((product, index) => {
-        //     console.log(index, product)
-        //     return product.characteristics.includes(filterObject.characteristics)
-        // })
-
-        // new way 0(1)
-        const filteredProducts = getProductsByCharacteristicIndex(filterObject.characteristics)
-        
-        // console.log("filteredProducts: ", filteredProducts)
-        return filteredProducts
+        // console.log("outputProductData: ", outputProductData)
+        return outputProductData
     },
-    getProductsWithCharacteristicPoints: () => {
-        return productData.map((product) => {
-            let pointsSum = sumPointsOfCharacteristics(product.characteristics)
-            product['characteristicsScore'] = pointsSum
+    getProductsWithCharacteristicScore: (products) => {
+        return products.map((product) => {
+            let pointsSum = sumPointsOfCharacteristics(product.characteristics);
+            product["characteristicsScore"] = pointsSum;
             return product;
-        })
-    }
+        });
+    },
 }
 
 module.exports = productUtil;

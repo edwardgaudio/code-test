@@ -1,8 +1,9 @@
 const productData = require('../products');
+const _ = require("lodash")
 
 const getCharateristicIndex = () => {
     let index = {}
-    productData.forEach((product) => {
+     productData.forEach((product) => {
         product.characteristics.forEach((charac) => {
             if (!index[charac]) {
                 index[charac] = []
@@ -18,7 +19,7 @@ const characteristicIndex = getCharateristicIndex();
 
 const getProductsByCharacteristicIndex = (charac) => {
      if (characteristicIndex[charac]) {
-        return characteristicIndex[charac]
+        return _.cloneDeep(characteristicIndex[charac])
      } else {
         return []
      }
