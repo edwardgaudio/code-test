@@ -2,11 +2,11 @@ const characteristicList = [ // would rather call for this from the backend
 	"All", // manually added option, if you could deselect could lose
   "Plastic-Free",
   "Locally Produced",
-  "Wasteful",
   "Humane",
   "Vegan",
   "Unhealthy",
-  "Healthy"
+  "Healthy",
+  "Wasteful",
 ]
 
 const CharacteristicPicker = (props) => {
