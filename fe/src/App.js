@@ -10,7 +10,7 @@ const App = () => {
 
   const handleCharacteristicPick = (e) => {
     let value = e.target.value
-    console.log('someone picked: ', value)
+    console.log('🍓 someone picked: ', value)
     setCharacteristicChoice(value)
   }
 
