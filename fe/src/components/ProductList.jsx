@@ -17,9 +17,7 @@ const ProductList = (props) => {
       const result = await axios.get(url)
       data = result.data
       console.log(data)
-      setTimeout(() => {
-        setProducts(data) // adding for drama
-      }, 500)
+      setProducts(data)
 
     } catch (error) {
       console.log(error)
@@ -43,17 +41,17 @@ const ProductList = (props) => {
     setLoading(false)
   }, [props.characteristic])
 
-  if (!products || loading) {
+  if (loading) {
     return <div>
       LOADING
     </div>
-  }
-
+  } 
+  
   return (
     <div>
       <ul>
         {
-          products.map((p) => {
+          products && products.map((p) => {
             return(
               <div key={p.name}>
                 <li>{p.name}</li>
