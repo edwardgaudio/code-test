@@ -1,54 +1,74 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import strawberry from '../strawberry.png'
 
-const ProductList = () => {
-    const [products, setProducts] = useState()
-    // const [loading, setLoading] = useState(false)
-    // const [error, setError] = useState()
+const baseUrl = 'http://127.0.0.1:8000'
 
-    useEffect(() => {
-        axios.get('http://127.0.0.1:8000/products')
-        .then((result) => {
-            const data = result.data
-            console.log(data)
-            setTimeout(() => {
-                setProducts(data)
-            }, 1000)
-        })
-        .catch((error) => {
-            console.log(error)
-            alert(error)
-        })
-    }, [])
+const ProductList = (props) => {
+  const [products, setProducts] = useState()
+  const [loading, setLoading] = useState(false)
 
-    if (!products) {
-        return <div>
-            LOADING
-            {/* <img src={strawberry} className="App-logo loading-spinner" alt="logo" /> */}
-        </div>
+  const fetchProductsFromBE = async (characteristic) => {
+    let data;
+    try {
+      let url = baseUrl + '/products'
+      const queryParams = formatQueryParams(characteristic)
+      url += queryParams
+      console.log("GET", url.split("8000")[1])
+      const result = await axios.get(url)
+      data = result.data
+      console.log(data)
+      setTimeout(() => {
+        setProducts(data) // adding for drama
+      }, 500)
+
+    } catch (error) {
+      console.log(error)
+      alert(error)
     }
+    return data;
+  }
 
-    return (
-        <div>
-            <ul>
-                {
-                    products.map((p) => {
-                        return(
-                            <>
-                            <li key={p.name}>{p.name}</li>
-                                <ul>
-                                    {p.characteristics && p.characteristics.map((c) => {
-                                        return (<li>{c}</li>)
-                                    })}
-                                </ul>
-                            </>
-                        )
-                    })
-                }
-            </ul>
-        </div>
-    )
+  const formatQueryParams = (characteristic) => {
+    let qpString = '';
+    if (characteristic && characteristic !== "All") {
+      qpString += '?'
+      qpString += 'characteristics=' + characteristic
+    }
+    return qpString
+  }
+
+  useEffect(() => {
+    setLoading(true)
+    fetchProductsFromBE(props.characteristic)
+    setLoading(false)
+  }, [props.characteristic])
+
+  if (!products || loading) {
+    return <div>
+      LOADING
+    </div>
+  }
+
+  return (
+    <div>
+      <ul>
+        {
+          products.map((p) => {
+            return(
+              <div key={p.name}>
+                <li>{p.name}</li>
+                <ul>
+                  {p.characteristics && p.characteristics.map((c) => {
+                    return (<li key={c+'-li'}>{c}</li>)
+                  })}
+                </ul>
+              </div>
+            )
+          })
+        }
+      </ul>
+    </div>
+  )
 }
 
 export default ProductList
